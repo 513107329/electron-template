@@ -1,4 +1,6 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow } = require('electron')
+const path = require('path')
+require('./registerGlobal')
 
 const createWindow = () => {
 	const win = new BrowserWindow({
@@ -6,7 +8,8 @@ const createWindow = () => {
 		height: 600,
 		webPreferences: {
 			nodeIntegration: true,
-
+			preload: path.join(__dirname, 'preload.js'),
+			webviewTag: true
 		}
 	})
 
@@ -14,7 +17,6 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-	ipcMain.handle('ping', () => console.log('pong'))
 	createWindow()
 })
 

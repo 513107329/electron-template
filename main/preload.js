@@ -1,6 +1,11 @@
 const { contextBridge, ipcRenderer } = require('electron')
+const { sendForceRefresh, sendRefresh } = require('./forceRefreshModule')
 
 contextBridge.exposeInMainWorld('versions', {
 	...process.versions,
-	ping: () => ipcRenderer.invoke('ping')
+})
+
+contextBridge.exposeInMainWorld('refresh', {
+	sendForceRefresh,
+	sendRefresh
 })
