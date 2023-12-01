@@ -25,6 +25,15 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
+      {/* <p className="read-the-docs">
+				node version: {{ versions.node }}
+      </p>
+      <p className="read-the-docs">
+        chrome version: {{ versions.chrome }}
+      </p>
+      <p className="read-the-docs">
+				electron version: {{ versions.electron }}
+      </p> */}
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>

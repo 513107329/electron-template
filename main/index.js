@@ -1,11 +1,12 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 
 const createWindow = () => {
 	const win = new BrowserWindow({
 		width: 800, 
 		height: 600,
 		webPreferences: {
-			nodeIntegration: true
+			nodeIntegration: true,
+
 		}
 	})
 
@@ -13,6 +14,7 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
+	ipcMain.handle('ping', () => console.log('pong'))
 	createWindow()
 })
 
